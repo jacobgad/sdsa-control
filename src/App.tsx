@@ -1,10 +1,15 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Dashboard from './Dashboard';
 import { ThemeProvider } from './components/theme-provider';
-import { Button } from './components/ui/button';
+
+const queryClient = new QueryClient();
 
 export default function App() {
 	return (
-		<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-			<Button>Button</Button>
-		</ThemeProvider>
+		<QueryClientProvider client={queryClient}>
+			<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+				<Dashboard />
+			</ThemeProvider>
+		</QueryClientProvider>
 	);
 }
