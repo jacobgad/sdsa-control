@@ -1,16 +1,33 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import obs from './lib/obs';
 import { Button } from './components/ui/button';
 
-export default function SceneList() {
-	const { data } = useQuery(['GetSceneList'], () => obs.call('GetSceneList'));
+type SceneListProps = {
+	scenes: string[];
+	currentProgramScene: string;
+};
+
+export default function SceneList({ scenes, currentProgramScene }: SceneListProps) {
+	const queryClient = useQueryClient();
+
+	const { mutate } = useMutation({
+		mutationFn: (sceneName: string) => obs.call('SetCurrentProgramScene', { sceneName }),
+		onSuccess: () => {
+			queryClient.invalidateQueries(['GetSceneList']);
+			queryClient.invalidateQueries(['GetSourceScreenshot']);
+		},
+	});
 
 	return (
-		<ul>
-			{data?.scenes.map(({ sceneName }) => (
-				<li key={sceneName?.toString()}>
-					<Button disabled={sceneName === data.currentProgramSceneName}>
-						{sceneName?.toString()}
+		<ul className="grid grid-cols-3 gap-2">
+			{scenes.map((scene) => (
+				<li key={scene}>
+					<Button
+						disabled={scene === currentProgramScene}
+						onClick={() => mutate(scene)}
+						className="w-full"
+					>
+						{scene}
 					</Button>
 				</li>
 			))}
