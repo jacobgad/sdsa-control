@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query';
 import obs from './lib/obs';
+import { useQuery } from 'react-query';
 
 type SourceScreenshotProps = {
 	sourceName: string;

@@ -1,7 +1,7 @@
-import { useQuery } from 'react-query';
-import SourceScreenshot from './SourceScreenshot';
 import SceneList from './SceneList';
+import SourceScreenshot from './SourceScreenshot';
 import obs from './lib/obs';
+import { useQuery } from 'react-query';
 
 export default function Dashboard() {
 	const { data } = useQuery({

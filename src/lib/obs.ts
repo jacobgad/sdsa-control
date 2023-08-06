@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import OBSWebSocket, { OBSWebSocketError } from 'obs-websocket-js';
 
 const obs = new OBSWebSocket();

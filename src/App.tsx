@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Dashboard from './Dashboard';
-import { ThemeProvider } from './components/theme-provider';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { ThemeProvider } from './components/theme-provider';
 
 const queryClient = new QueryClient();
 

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query';
-import obs from './lib/obs';
 import { Button } from './components/ui/button';
+import obs from './lib/obs';
 
 type SceneListProps = {
 	scenes: string[];
