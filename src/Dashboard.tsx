@@ -1,5 +1,6 @@
 import SceneList from './SceneList';
 import SourceScreenshot from './SourceScreenshot';
+import StreamingButton from './StreamingButton';
 import obs from './lib/obs';
 import { useQuery } from 'react-query';
 
@@ -16,6 +17,7 @@ export default function Dashboard() {
 		<>
 			{data && <SourceScreenshot sourceName={data.currentProgramSceneName} />}
 			<SceneList scenes={scenes} currentProgramScene={currentProgramSceneName} />
+			<StreamingButton />
 		</>
 	);
 }
